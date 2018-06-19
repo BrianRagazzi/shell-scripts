@@ -13,5 +13,12 @@ sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_V
 
 # Add Permissions
 sudo groupadd docker
+# sudo useradd dockeruser -p dockeruser -G docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
+
+#su dockeruser
+#cd minio
+#docker-compose up -d
+#exit
+echo "Logout and back in to enable docker group membership"
