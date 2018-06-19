@@ -1,0 +1,12 @@
+minio:
+  restart: always
+  image: minio/minio
+  ports:
+    - "9000:9000"
+  volumes:
+    - /data/buckets:/data
+    - ./test/.minio/config:/root/.minio
+  environment:
+    - "MINIO_ACCESS_KEY=MYACCESSKEY"
+    - "MINIO_SECRET_KEY=MYSECRETKEY"
+  command: server /data
