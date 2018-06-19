@@ -2,6 +2,10 @@
 # Script only works if sudo caches the password for a few minutes
 sudo true
 
+sudo apt-get update
+sudo apt-get install git unzip python-setuptools -y
+
+
 # Use the official docker install script
 wget -qO- https://get.docker.com/ | sh
 
