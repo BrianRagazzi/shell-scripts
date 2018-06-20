@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 cd minio
 docker-compose up -d
 
@@ -27,4 +30,6 @@ s3cmd mb s3://binaries
 cd ../concourse
 ./generate_keys.sh
 
-# docker-compose up -d
+docker-compose up -d
+
+echo "Connect to concourse using http, minio is using 9000"
