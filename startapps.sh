@@ -3,6 +3,7 @@ docker-compose up -d
 
 wget https://github.com/s3tools/s3cmd/archive/master.zip
 unzip master.zip
+cd s3cmd-master
 sudo python setup.py install
 
 
@@ -21,6 +22,9 @@ secret_key = MYSECRETKEY
 signature_v2 = False
 EOF
 
-
-
 s3cmd mb s3://binaries
+
+cd ../concourse
+./generate_keys.sh
+
+# docker-compose up -d
