@@ -3,6 +3,8 @@
 #HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
 HOST_IP=$(hostname -I | cut -d' ' -f 1)
 
+CURRDIR=$(pwd)
+
 cd minio
 docker-compose up -d
 
@@ -35,7 +37,7 @@ s3cmd put placeholder S3://binaries/BOSH/manifests/
 s3cmd put placeholder S3://binaries/BOSH/stemcells/
 
 
-cd ../concourse
+cd $CURRDIR/concourse
 ./generate_keys.sh
 
 docker-compose up -d
