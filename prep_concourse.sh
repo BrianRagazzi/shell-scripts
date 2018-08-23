@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
+#HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
+HOST_IP=$(hostname -I | cut -d' ' -f 1)
 
 CONCOURSE_VERSION=`git ls-remote --tags https://github.com/concourse/concourse | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n -1`
 sudo sh -c "curl -L https://github.com/concourse/concourse/releases/download/v${CONCOURSE_VERSION}/fly_linux_amd64 > /usr/local/bin/fly"
