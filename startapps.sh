@@ -42,5 +42,5 @@ cd $CURRDIR/concourse
 
 docker-compose up -d
 
-echo "Connect to concourse using http://$HOST_IP, logon as concourse|changeme"
-echo "Connect to minio using http://$HOST_IP:9000, logon as MYACCESSKEY|MYSECRETKEY"
+echo "Connect to concourse using http://$HOST_IP, logon as $CONCOURSE_BASIC_AUTH_USERNAME|$CONCOURSE_BASIC_AUTH_PASSWORD"
+echo "Connect to minio using http://$HOST_IP:9000, logon as $MINIO_ACCESS_KEY|$MINIO_SECRET_KEY
