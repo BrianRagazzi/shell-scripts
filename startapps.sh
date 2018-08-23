@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
 cd minio
 docker-compose up -d
@@ -27,9 +28,16 @@ EOF
 
 s3cmd mb s3://binaries
 
+echo placeholder > placeholder
+s3cmd put placeholder S3://binaries/BOSH/releases/
+s3cmd put placeholder S3://binaries/BOSH/manifests/
+s3cmd put placeholder S3://binaries/BOSH/stemcells/
+
+
 cd ../concourse
 ./generate_keys.sh
 
 docker-compose up -d
 
-echo "Connect to concourse using http, minio is using 9000"
+echo "Connect to concourse using http://$HOST_IP, logon as concourse|changeme"
+echo "Connect to minio using http://$HOST_IP:9000, logon as MYACCESSKEY|MYSECRETKEY"
