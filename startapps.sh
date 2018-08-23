@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
+#HOST_IP=`ip route get 1 | awk '{print $NF;exit}'`
+HOST_IP=$(hostname -I | cut -d' ' -f 1)
 
 cd minio
 docker-compose up -d
