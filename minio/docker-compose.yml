@@ -7,6 +7,6 @@ minio:
     - /data/buckets:/data
     - ./test/.minio/config:/root/.minio
   environment:
-    - "MINIO_ACCESS_KEY=MYACCESSKEY"
-    - "MINIO_SECRET_KEY=MYSECRETKEY"
+    - MINIO_ACCESS_KEY
+    - MINIO_SECRET_KEY
   command: server /data
